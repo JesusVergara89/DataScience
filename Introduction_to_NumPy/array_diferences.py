@@ -151,16 +151,171 @@
 
 #####################################################
 
+#import numpy as np
+
+#np.random.seed(0)
+
+#x = np.random.randint(0,20,(4,5))
+
+#print(x)
+
+#print(x[:,1::2])
+
+#print(x[::-1,::-1])
+
+#####################################################
+"""
 import numpy as np
 
 np.random.seed(0)
 
 x = np.random.randint(0,20,(4,5))
 
-#print(x)
+print(x)
+print(x[:2,:2])
 
-#print(x[:,1::2])
+x_subs = (x[:2,:2])
+x_subs[0,0] = 222
 
-print(x[::-1,::-1])
+print(x)
+"""
+#####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.random.randint(0,20,(4,5))
+
+x1 = (x[:2,:3]).copy()
+
+x1[1,2] = 999
+
+print(x)
+print(x1)
+"""
 
 #####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(1,4)
+
+y = x.reshape((1,3))
+
+print(y)
+
+"""
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(1,4)
+
+y = x[np.newaxis, :]
+
+print(y)
+"""
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(1,4)
+
+y = x.reshape((3,1))
+
+print(y)
+"""
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(1,4)
+
+y = x[:, np.newaxis]
+
+print(y)
+"""
+#####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(1,5)
+
+y = np.arange(6,10)
+
+xy = np.concatenate([x,y])
+
+print(xy)
+
+z = np.arange(10,14)
+
+xyz = np.concatenate([x,y,z])
+
+print(xyz)
+"""
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.random.randint(0,8,(2,3))
+
+y = np.random.randint(0,8,(2,3))
+
+xy = np.concatenate([x,y])
+
+print(xy)
+"""
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.random.randint(0,8,(2,3))
+
+y = np.random.randint(0,8,(2,3))
+
+xy = np.concatenate([x,y], axis=1)
+
+print(xy)
+"""
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.random.randint(1,10,(1,3))
+
+y = np.random.randint(1,10,(3,3))
+
+print(f'x: {x}', f'y: {y}', sep='\n\n')
+
+xy = np.vstack([x,y])
+
+print(xy)
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.random.randint(1,10,(2,3))
+
+y = np.array([
+    [99],
+    [99]])
+
+print(f'x: {x}', f'y: {y}', sep='\n\n')
+
+print('\n')
+
+xy = np.hstack([x,y])
+
+print(xy)
