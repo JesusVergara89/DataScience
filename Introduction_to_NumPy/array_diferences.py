@@ -302,6 +302,7 @@ xy = np.vstack([x,y])
 
 print(xy)
 """
+"""
 import numpy as np
 
 np.random.seed(0)
@@ -319,3 +320,157 @@ print('\n')
 xy = np.hstack([x,y])
 
 print(xy)
+"""
+#####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(10)
+
+print(x)
+
+x1,x2,x3 = np.split(x, [3,5])
+
+print(f'x1: {x1}',f'x2: {x2}',f'x3: {x3}', sep='\n\n')
+"""
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(16).reshape((4,4))
+
+print(x)
+
+upper, lower = np.vsplit(x, [2])
+
+#print('####################')
+
+#print(f'upper: {upper}',f'lower: {lower}', sep='\n\n')
+
+print('####################')
+
+left, right = np.hsplit(x, [1])
+
+print(f'left: {left}',f'right: {right}', sep='\n\n')
+"""
+#####################################################
+"""
+import numpy as np
+import timeit
+
+np.random.seed(0)
+
+def compute_reciprocals(values):
+    output = np.empty(len(values))
+    for i in range(len(values)):
+        output[i] = 1.0 / values[i]
+    return output
+
+values = np.random.randint(1, 10, size=1000000)
+
+#execution_time = timeit.timeit(lambda: compute_reciprocals(values), number=3)
+#print(execution_time)
+
+def compute_reciprocals_with_ufunc(values):
+    return 1.0 / values
+
+execution_time = timeit.timeit(lambda: compute_reciprocals_with_ufunc(values), number=100)
+print(execution_time)
+"""
+#####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.random.randint(1, 10, size=10)
+
+#y = np.random.randint(1, 10, size=10)
+
+z = np.exp(x)
+
+print(z, sep='|')
+"""
+#####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(5)
+y = np.arange(1,6)
+
+print(x,y, sep='\n\n', end='\n\n')
+
+print(x/y)
+"""
+#####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(9).reshape((3,3))
+
+print(x, end='\n\n')
+
+y = np.power(x,2)
+
+print(y)
+"""
+#####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(4)
+
+print(f'x = {x}',end='\n\n')
+print(f'x + 5 = {x+5}',end='\n\n')
+print(f'x - 5 = {x-5}',end='\n\n')
+print(f'x * 2 = {x*2}',end='\n\n')
+print(f'x / 2 = {x/2}',end='\n\n')
+print(f'x // 2 = {x//2}',end='\n\n')
+print(f'-x = {-x}',end='\n\n')
+print(f'x ** 2 = {x**2}',end='\n\n')
+print(f'x % 2 = {x%2}',end='\n\n')
+"""
+#####################################################
+"""
+import numpy as np
+
+np.random.seed(0)
+
+x = np.arange(6)
+
+y = -x
+
+print(y)
+
+z = abs(y)
+
+print(z) 
+
+"""
+import numpy as np
+
+np.random.seed(0)
+
+real_parts = np.random.rand(5)  
+imaginary_parts = np.random.rand(5) 
+
+complex_numbers = real_parts + 1j * imaginary_parts
+
+#print(complex_numbers)
+
+y = abs(complex_numbers)
+
+print(y)
+#####################################################
+
+
+
