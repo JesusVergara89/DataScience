@@ -792,12 +792,13 @@ print(f'shape of a: {a.shape}')
 
 print(m+a)
 """
-
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn; seaborn.set_theme()
 import timeit
+"""
 """
 np.random.seed(0)
 
@@ -861,6 +862,7 @@ ax.set_zlabel('Z axis')
 plt.show()
 """
 #####################################################
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -903,3 +905,234 @@ print(f'Numbers of days without rain: {np.sum(inches == 0 )}')
 print(f'Numbers of days with rain:    {np.sum(inches > 0 )}')
 print(f'Numbers of days with more than 0.5inches of rain:    {np.sum(inches > 0.5 )}')
 print(f'Rainy days with < 0.1 inches:    {np.sum(((inches > 0) & (inches < 0.2)))}')
+"""
+#####################################################
+"""
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(0)
+
+rng = np.random.RandomState(0)
+
+x = rng.randint(0,10,(3,4))
+
+print(x)
+print(x < 5 )
+
+print(x[x < 5])
+"""
+"""
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(0)
+
+rainfall = pd.read_csv('data_to_read/Seattle2014.csv')['PRCP'].values
+
+inches = rainfall / 254
+
+#print(inches)
+# < 
+# >
+
+rainy = ( inches > 0 )
+
+#print(rainy)
+
+summers_days = np.arange(365) - 172
+
+#print(summers_days)
+
+summer = ((np.arange(365) - 172 < 90 ) & (np.arange(365) - 172 > 0))
+
+#print(summer)
+
+print(f'Median precipitation on rainy days in 2014 (inches) = {np.median(inches[rainy])}')
+print(f'Median precipitation on summer days in 2014 (inches) = {np.median(inches[summer])}')
+print(f'Mex precipitation on summer days in 2014 (inches) = {np.max(inches[summer])}')
+print(f'Median precip on non-summer rainy days (inches) = {np.median(inches[rainy & ~summer])}')
+"""
+#####################################################
+"""
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(0)
+
+rand = np.random.RandomState(0)
+
+x = rand.randint(100, size=10)
+
+X = np.arange(12).reshape((3, 4))
+
+# < 
+# >
+
+ind = np.array([[3,7],
+                [4,5]])
+
+#print(x[ind])
+
+row = np.array([0,1,2])
+col = np.array([2,1,3])
+
+#print(X[row[:,np.newaxis], col])
+
+y = row[:, np.newaxis] * col
+
+print(y)
+"""
+#####################################################
+"""
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(0)
+
+X = np.arange(12).reshape((3, 4))
+
+#print(X[2,[2,0,1]])
+
+#print(X[1:,[2,0,1]])
+
+row = np.array([0,1,2])
+col = np.array([2,1,3])
+
+mask = np.array([1,0,1,0], dtype=bool)
+
+#print(mask)
+
+print(X[row[:, np.newaxis], mask])
+"""
+#####################################################
+"""
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(0)
+
+#X = np.arange(12).reshape((3, 4))
+
+mean = [0,0]
+cov = [[1,2],
+       [2,5]]
+X = np.random.multivariate_normal(mean, cov, 100)
+
+#plt.scatter(X[:,0],X[:,1])
+#plt.show()
+
+indices = np.random.choice(X.shape[0],20,replace=False)
+
+#print(indices)
+
+selection = X[indices]
+
+#print(selection)
+#print(selection.shape)
+
+plt.scatter(X[:,0],X[:,1], alpha=0.3)
+plt.scatter(selection[:, 0], selection[:, 1],facecolor='red',s=200)
+plt.show()
+"""
+#####################################################
+"""
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(0)
+
+x = np.arange(10)
+
+y = { f'X[{i}]' : int(i) for i in x }
+
+print(y)
+
+i = np.array([2,1,8,4])
+
+print(i)
+
+x[i] = 99
+
+print(x)
+"""
+#####################################################
+"""
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(0)
+
+x = np.zeros(10)
+print(x)
+
+i = [2, 3, 3, 4, 4, 4]
+
+y = np.add.at(x,i,1)
+
+print(y)
+
+"""
+#####################################################
+"""
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(42)
+
+x = np.random.randn(100)
+
+bins = np.linspace(-5,5,20)
+
+plt.hist(x, bins, histtype='step')
+
+plt.show()
+"""
+#####################################################
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set_theme()
+import timeit
+
+np.random.seed(0)
+
+
+def selection_sort(x):
+    for i in range(len(x)):
+        swap = i + np.argmin(x[i:])
+        (x[i], x[swap]) = (x[swap], x[i])
+    return x
+
+x = np.array([2,1,4,3,5])
+
+compute_time_python = timeit.timeit(lambda: selection_sort(x), number=100)
+compute_time_numpy = timeit.timeit(lambda: np.sort(x), number=100)
+
+print(compute_time_python)
+print(compute_time_numpy)
