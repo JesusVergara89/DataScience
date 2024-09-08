@@ -14,9 +14,9 @@ jobs:
          uses: actions/checkout@30ee2e72707b073f546dc63705bd57924b1b9620 #v0.0.0
 
        - name: Create a new branch 'test'
-       run: |
-         git checkout -b test
-         git push origin test
+         run: |
+            git checkout -b test
+            git push origin test
          
 
        
