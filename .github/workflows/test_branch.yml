@@ -12,6 +12,8 @@ jobs:
      steps:
        - name: Checkout the repository
          uses: actions/checkout@v3
+         with:
+           token: ${{ secrets.GITHUB_TOKEN }} 
 
        - name: Create a new branch 'test'
          run: |
