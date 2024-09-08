@@ -1,26 +1,26 @@
 name: initial
-run-name: this is a initial action for this repo
+run-name: this is an initial action for this repo
 on: 
   push:
     branches: 
       - main
 
-
 jobs:
-   created-new-branch:
-     runs-on: ubuntu-latest
+  created-new-branch:
+    runs-on: ubuntu-latest
 
-     steps:
-       - name: Checkout the repository
-         uses: actions/checkout@v3
-         with:
-           token: ${{ secrets.GITHUB_TOKEN }} 
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} 
 
-       - name: Create a new branch 'test'
-         run: |
+      - name: Check if 'test' branch exists
+        run: |
+          if git show-ref --verify --quiet refs/heads/test; then
+            echo "Branch 'test' already exists."
+          else
+            echo "Branch 'test' does not exist. Creating branch."
             git checkout -b test
             git push origin test
-         
-
-       
-
+          fi
