@@ -1122,7 +1122,7 @@ import timeit
 
 np.random.seed(0)
 
-
+"""
 def selection_sort(x):
     for i in range(len(x)):
         swap = i + np.argmin(x[i:])
@@ -1136,3 +1136,68 @@ compute_time_numpy = timeit.timeit(lambda: np.sort(x), number=100)
 
 print(compute_time_python)
 print(compute_time_numpy)
+"""
+
+# < 
+# >
+"""
+def bogosort(x):
+    while np.any(x[:-1] > x[1:]):
+        np.random.shuffle(x)
+    return x
+x = np.array([2,1,4,3,5])
+print(bogosort(x))
+"""
+
+#x = np.array([2,1,4,3,5])
+
+#y = np.sort(x)
+
+#print(y)
+
+#i = np.argsort(x)
+
+#print(i)
+
+#print(x[i])
+
+#rand = np.random.RandomState(42)
+
+#x = rand.randint(0,10,(4,6))
+
+#print(x)
+
+#y = np.sort(x, axis =1)
+
+#print(y)
+"""
+x = np.array([7,2,3,1,6,5,4])
+
+y = np.partition(x,3)
+z = np.partition(x,1)
+
+print(y)
+print(z)
+"""
+"""
+y = np.partition(x,1, axis=0)
+z = np.partition(x,1, axis=1)
+
+print(y)
+print(z)
+"""
+# < 
+# >
+
+x = np.random.randint(0,10,(10,2))
+
+#print(x)
+
+#plt.scatter(x[:,0],x[:,1], s=100)
+#plt.show()
+
+x1 = [x[:,np.newaxis,:]]
+#print(x1)
+
+x2 = [x[np.newaxis,:,:]]
+print(x2)

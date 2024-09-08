@@ -1,0 +1,23 @@
+name: initial
+run-name: this is a initial action for this repo
+on: 
+  push:
+    branches: 
+      - main
+
+jobs:
+   created-new-branch:
+     runs-on: ubuntu-latest
+
+     steps:
+       - name: Checkout the repository
+         uses: actions/checkout@30ee2e72707b073f546dc63705bd57924b1b9620 #v0.0.0
+
+       - name: Create a new branch 'test'
+       run: |
+         git checkout -b test
+         git push origin test
+         
+
+       
+
