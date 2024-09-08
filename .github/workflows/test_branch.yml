@@ -1,8 +1,8 @@
 name: initial
 run-name: this is an initial action for this repo
-on: 
+on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
@@ -13,11 +13,14 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} 
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check if 'test' branch exists
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Check if 'test' branch exists and create if necessary
         run: |
-          if git show-ref --verify --quiet refs/heads/test; then
+          if git rev-parse --verify --quiet test; then
             echo "Branch 'test' already exists."
           else
             echo "Branch 'test' does not exist. Creating branch."
