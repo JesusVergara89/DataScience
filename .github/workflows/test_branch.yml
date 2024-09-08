@@ -11,7 +11,7 @@ jobs:
 
      steps:
        - name: Checkout the repository
-         uses: actions/checkout@30ee2e72707b073f546dc63705bd57924b1b9620 #v0.0.0
+         uses: actions/checkout@v3
 
        - name: Create a new branch 'test'
          run: |
